@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>药酒行业调查问卷 - 灵酒源"葯"</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+        }
+
+        .survey-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 20px;
+        }
+
+        .survey-form {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .survey-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .survey-header h1 {
+            color: #00ffff;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .question-group {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #00ffff;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 4px;
+            color: #fff;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin: 0.5rem 0;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: inline;
+            margin-right: 1.5rem;
+            font-weight: normal;
+            color: #fff;
+        }
+
+        button {
+            background: linear-gradient(45deg, #00ffff, #00cccc);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .required:after {
+            content: " *";
+            color: #ff0066;
+        }
+
+        /* 返回主页按钮 */
+        .back-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00ffff;
+            border-radius: 4px;
+            color: #00ffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* 添加赛博朋克风格的装饰元素 */
+        .cyber-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: 
+                linear-gradient(45deg, transparent 48%, rgba(0, 255, 255, 0.1) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(0, 255, 255, 0.1) 50%, transparent 52%);
+            background-size: 60px 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 添加返回主页按钮 -->
+    <a href="index.html" class="back-home">返回主页</a>
+
+    <!-- 添加装饰背景 -->
+    <div class="cyber-decoration"></div>
+
+    <div class="survey-container">
+        <div class="survey-form">
+            <div class="survey-header">
+                <h1>药酒行业调查问卷</h1>
+                <p>感谢您参与本次调查，您的反馈对我们很重要。</p>
+            </div>
+            
+            <form id="medicineLiquorSurvey" onsubmit="return validateForm(event)">
+                <div class="question-group">
+                    <label class="required">1. 您的年龄段：</label>
+                    <select name="age" required>
+                        <option value="">请选择</option>
+                        <option value="18-25">18-25岁</option>
+                        <option value="26-35">26-35岁</option>
+                        <option value="36-45">36-45岁</option>
+                        <option value="46-55">46-55岁</option>
+                        <option value="56+">56岁以上</option>
+                    </select>
+                </div>
+
+                <div class="question-group">
+                    <label class="required">2. 您是否听说过药酒？</label>
+                    <div class="radio-group">
+                        <input type="radio" name="heard" value="yes" id="heard-yes" required>
+                        <label for="heard-yes">是</label>
+                        <input type="radio" name="heard" value="no" id="heard-no">
+                        <label for="heard-no">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label>3a. 如果购买过，您购买药酒的主要目的是什么？</label>
+                    <div class="radio-group">
+                        <input type="radio" name="purpose" value="self" id="purpose-self">
+                        <label for="purpose-self">自己使用</label>
+                        <input type="radio" name="purpose" value="gift" id="purpose-gift">
+                        <label for="purpose-gift">送礼</label>
+                        <input type="radio" name="purpose" value="both" id="purpose-both">
+                        <label for="purpose-both">两者都有</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label>3b. 您通常从哪些渠道购买药酒？（可多选）</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" name="channel" value="pharmacy" id="channel-pharmacy">
+                        <label for="channel-pharmacy">药店</label>
+                        <input type="checkbox" name="channel" value="supermarket" id="channel-supermarket">
+                        <label for="channel-supermarket">超市</label>
+                        <input type="checkbox" name="channel" value="online" id="channel-online">
+                        <label for="channel-online">网上商城</label>
+                        <input type="checkbox" name="channel" value="direct" id="channel-direct">
+                        <label for="channel-direct">厂家直销</label>
+                        <input type="checkbox" name="channel" value="other" id="channel-other">
+                        <label for="channel-other">其他</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label>4. 您认为药酒的主要功效是什么？（可多选）</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" name="effects" value="health" id="effect-health">
+                        <label for="effect-health">养生保健</label>
+                        <input type="checkbox" name="effects" value="medical" id="effect-medical">
+                        <label for="effect-medical">治疗疾病</label>
+                        <input type="checkbox" name="effects" value="beauty" id="effect-beauty">
+                        <label for="effect-beauty">美容养颜</label>
+                        <input type="checkbox" name="effects" value="sleep" id="effect-sleep">
+                        <label for="effect-sleep">改善睡眠</label>
+                        <input type="checkbox" name="effects" value="other" id="effect-other">
+                        <label for="effect-other">其他</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="required">4a. 在选择药酒时，您最看重以下哪些因素？（请按重要性排序）</label>
+                    <div class="checkbox-group">
+                        <select name="factor1" required>
+                            <option value="">第一重要因素</option>
+                            <option value="brand">品牌知名度</option>
+                            <option value="price">价格</option>
+                            <option value="effect">功效</option>
+                            <option value="taste">口感</option>
+                            <option value="package">包装</option>
+                            <option value="safety">安全性</option>
+                        </select>
+                        <select name="factor2" required>
+                            <option value="">第二重要因素</option>
+                            <option value="brand">品牌知名度</option>
+                            <option value="price">价格</option>
+                            <option value="effect">功效</option>
+                            <option value="taste">口感</option>
+                            <option value="package">包装</option>
+                            <option value="safety">安全性</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="required">5. 您能接受的药酒价格范围是？</label>
+                    <select name="price" required>
+                        <option value="">请选择</option>
+                        <option value="0-100">100元以下</option>
+                        <option value="101-300">101-300元</option>
+                        <option value="301-500">301-500元</option>
+                        <option value="501-1000">501-1000元</option>
+                        <option value="1000+">1000元以上</option>
+                    </select>
+                </div>
+
+                <div class="question-group">
+                    <label>5a. 您期望的药酒包装容量是？</label>
+                    <div class="radio-group">
+                        <input type="radio" name="volume" value="100" id="volume-100">
+                        <label for="volume-100">100ml以下</label>
+                        <input type="radio" name="volume" value="250" id="volume-250">
+                        <label for="volume-250">100-250ml</label>
+                        <input type="radio" name="volume" value="500" id="volume-500">
+                        <label for="volume-500">250-500ml</label>
+                        <input type="radio" name="volume" value="1000" id="volume-1000">
+                        <label for="volume-1000">500-1000ml</label>
+                        <input type="radio" name="volume" value="more" id="volume-more">
+                        <label for="volume-more">1000ml以上</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label>5b. 您更倾向于选择什么样的包装形式？</label>
+                    <div class="radio-group">
+                        <input type="radio" name="package" value="traditional" id="package-traditional">
+                        <label for="package-traditional">传统陶瓷瓶</label>
+                        <input type="radio" name="package" value="glass" id="package-glass">
+                        <label for="package-glass">玻璃瓶</label>
+                        <input type="radio" name="package" value="gift" id="package-gift">
+                        <label for="package-gift">精美礼盒装</label>
+                        <input type="radio" name="package" value="plastic" id="package-plastic">
+                        <label for="package-plastic">塑料瓶</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label>6a. 您对药酒的口感有什么偏好？</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" name="taste" value="sweet" id="taste-sweet">
+                        <label for="taste-sweet">甜味</label>
+                        <input type="checkbox" name="taste" value="bitter" id="taste-bitter">
+                        <label for="taste-bitter">苦味</label>
+                        <input type="checkbox" name="taste" value="spicy" id="taste-spicy">
+                        <label for="taste-spicy">辛辣</label>
+                        <input type="checkbox" name="taste" value="mild" id="taste-mild">
+                        <label for="taste-mild">温和</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="required">6. 您对药酒产品最关注的方面是什么？</label>
+                    <textarea name="concerns" rows="4" required placeholder="请输入您的看法..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label>6b. 您是否愿意参与我们的产品体验活动？</label>
+                    <div class="radio-group">
+                        <input type="radio" name="experience" value="yes" id="experience-yes">
+                        <label for="experience-yes">是</label>
+                        <input type="radio" name="experience" value="no" id="experience-no">
+                        <label for="experience-no">否</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label>7. 您的联系方式（选填）：</label>
+                    <input type="email" name="email" placeholder="电子邮箱">
+                    <input type="text" name="phone" placeholder="手机号码" pattern="[0-9]{11}">
+                </div>
+
+                <button type="submit">提交问卷</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        async function validateForm(event) {
+            event.preventDefault();
+            
+            // 获取所有必填字段
+            const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+
+            // 检查必填字段是否已填写
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    isValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+
+            // 检查手机号码格式（如果填写了的话）
+            const phoneInput = document.querySelector('input[name="phone"]');
+            if (phoneInput.value && !/^[0-9]{11}$/.test(phoneInput.value)) {
+                isValid = false;
+                phoneInput.style.borderColor = 'red';
+                alert('请输入正确的手机号码格式');
+                return false;
+            }
+
+            // 添加条件性验证
+            const purchasedYes = document.getElementById('purchased-yes');
+            const purposeInputs = document.querySelectorAll('input[name="purpose"]');
+            
+            if (purchasedYes.checked) {
+                // 如果选择购买过，则购买目的为必填
+                let purposeSelected = false;
+                purposeInputs.forEach(input => {
+                    if (input.checked) purposeSelected = true;
+                });
+                
+                if (!purposeSelected) {
+                    isValid = false;
+                    alert('请选择购买目的');
+                    return false;
+                }
+            }
+
+            // 验证排序选择不重复
+            const factor1 = document.querySelector('select[name="factor1"]');
+            const factor2 = document.querySelector('select[name="factor2"]');
+            
+            if (factor1.value === factor2.value && factor1.value !== '') {
+                isValid = false;
+                alert('请不要选择相同的重要因素');
+                return false;
+            }
+
+            // 如果愿意参与体验活动，联系方式为必填
+            const experienceYes = document.getElementById('experience-yes');
+            const email = document.querySelector('input[name="email"]');
+            const phone = document.querySelector('input[name="phone"]');
+            
+            if (experienceYes.checked && !email.value && !phone.value) {
+                isValid = false;
+                alert('如果您愿意参与体验活动，请至少留下一种联系方式');
+                return false;
+            }
+
+            if (!isValid) {
+                alert('请填写所有必填项');
+                return false;
+            }
+
+            // 收集表单数据
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('http://localhost:5000/submit-survey', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    alert('感谢您的参与！');
+                    document.getElementById('medicineLiquorSurvey').reset();
+                } else {
+                    alert('提交失败，请稍后重试');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('提交失败，请检查网络连接');
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html> 

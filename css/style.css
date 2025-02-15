@@ -1,0 +1,1356 @@
+:root {
+    --cyber-primary: #15f0fc;     /* 明亮的青蓝色 */
+    --cyber-secondary: #ff0055;   /* 深紫色 */
+    --cyber-accent: #b967ff;      /* 霓虹粉 */
+    --cyber-yellow: #ffff00;
+    --cyber-blue: #0055ff;        /* 深蓝色 */
+    --cyber-bg: #0a0a0a;
+    --cyber-text: #ffffff;
+    --cyber-dark: #0a0a0a;        /* 深色背景 */
+    --cyber-light: #ffffff;       /* 浅色文本 */
+    
+    --gradient-1: linear-gradient(45deg, var(--cyber-primary), var(--cyber-secondary));
+    --gradient-2: linear-gradient(135deg, var(--cyber-blue), var(--cyber-accent));
+    
+    --neon-primary: 0 0 10px var(--cyber-primary),
+                   0 0 20px var(--cyber-primary),
+                   0 0 30px rgba(15, 240, 252, 0.5);
+    --neon-secondary: 0 0 10px var(--cyber-secondary),
+                     0 0 20px rgba(139, 0, 255, 0.5);
+}
+
+body {
+    background-color: var(--cyber-dark);
+    color: var(--cyber-light);
+    font-family: 'Rajdhani', sans-serif;
+    line-height: 1.6;
+    background-image: 
+        linear-gradient(45deg, rgba(15, 240, 252, 0.05) 1%, transparent 1%),
+        linear-gradient(-45deg, rgba(139, 0, 255, 0.05) 1%, transparent 1%);
+    background-size: 3px 3px;
+}
+
+/* 导航栏样式 */
+.cyber-header {
+    background: rgba(9, 4, 25, 0.9);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--cyber-primary);
+    box-shadow: 0 0 20px rgba(15, 240, 252, 0.2);
+}
+
+.cyber-nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: rgba(0, 255, 213, 0.1);
+    border: 1px solid rgba(0, 255, 213, 0.3);
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px var(--cyber-primary));
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.logo-img[src=""] {
+    display: none;
+}
+
+.logo-img:not([src]) {
+    display: none;
+}
+
+.logo:hover .logo-img {
+    filter: drop-shadow(0 0 15px var(--cyber-accent));
+    transform: scale(1.05);
+}
+
+/* 主视觉区域 */
+.cyber-hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 40vh;
+}
+
+/* 产品展示区域 */
+.product-showcase {
+    padding: 100px 5%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(255,0,255,0.1));
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.product-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--cyber-primary);
+    border-radius: 5px;
+}
+
+.product-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+/* 品牌故事区域 */
+.brand-story {
+    padding: 100px 5%;
+    background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,255,242,0.1));
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.story-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid var(--cyber-accent);
+}
+
+/* 页脚样式 */
+.cyber-footer {
+    background: rgba(9, 4, 25, 0.95);
+    border-top: 1px solid var(--cyber-primary);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* 页脚 Logo 样式 */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px var(--cyber-primary));
+    transition: all 0.3s ease;
+}
+
+.footer-logo-img:hover {
+    filter: drop-shadow(0 0 20px var(--cyber-primary));
+    transform: scale(1.05);
+}
+
+/* 页脚信息样式 */
+.footer-info {
+    text-align: center;
+}
+
+.contact-info h3 {
+    color: var(--cyber-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--cyber-primary);
+}
+
+.contact-info p {
+    color: var(--cyber-light);
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+/* 社交媒体链接样式 */
+.footer-social {
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--cyber-light);
+    transition: all 0.3s ease;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+    filter: brightness(0.8);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+    filter: brightness(1) drop-shadow(0 0 10px var(--cyber-primary));
+    transform: scale(1.1);
+}
+
+.social-link span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover span {
+    color: var(--cyber-primary);
+    opacity: 1;
+    text-shadow: 0 0 10px var(--cyber-primary);
+}
+
+/* 版权信息样式 */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(15, 240, 252, 0.1);
+}
+
+.footer-bottom p {
+    color: var(--cyber-light);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-logo {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* 动画效果 */
+.glitch-text {
+    position: relative;
+    animation: glitch 3s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--cyber-accent);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--cyber-primary);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0%, 100% { clip-path: inset(50% 0 50% 0); }
+    20% { clip-path: inset(60% 0 40% 0); }
+    40% { clip-path: inset(40% 0 60% 0); }
+    60% { clip-path: inset(70% 0 30% 0); }
+    80% { clip-path: inset(30% 0 70% 0); }
+}
+
+@keyframes glitch-anim2 {
+    0%, 100% { clip-path: inset(40% 0 60% 0); }
+    20% { clip-path: inset(30% 0 70% 0); }
+    40% { clip-path: inset(70% 0 30% 0); }
+    60% { clip-path: inset(50% 0 50% 0); }
+    80% { clip-path: inset(60% 0 40% 0); }
+}
+
+/* 内容分区样式 */
+.content-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        to bottom,
+        rgba(9, 4, 25, 0.9),
+        rgba(15, 240, 252, 0.05),
+        rgba(9, 4, 25, 0.9)
+    );
+}
+
+.section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* 产品展示网格 */
+.section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--cyber-primary);
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-10px);
+}
+
+.content-box {
+    position: relative;
+    aspect-ratio: 1;
+}
+
+.content-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, 
+        rgba(0,0,0,0.9), 
+        rgba(0,255,242,0.1));
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover .content-overlay {
+    transform: translateY(0);
+}
+
+/* 品牌故事区域 */
+.brand-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.cyber-title {
+    font-size: 2.5rem;
+    color: var(--cyber-primary);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.cyber-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--cyber-accent);
+}
+
+/* 营销活动滑块 */
+.marketing-slider {
+    overflow: hidden;
+    margin-top: 3rem;
+}
+
+.slider-item {
+    position: relative;
+    border: 2px solid var(--cyber-secondary);
+}
+
+/* 联系方式区域 */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+.info-list {
+    display: grid;
+    gap: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.social-icon {
+    padding: 1rem 2rem;
+    border: 1px solid var(--cyber-primary);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: var(--cyber-primary);
+    color: var(--cyber-bg);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .section-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section-grid,
+    .brand-content,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 产品展示框架样式 */
+.product-series {
+    margin-bottom: 100px;
+}
+
+.series-title {
+    font-size: 2.5rem;
+    color: var(--cyber-primary);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--cyber-primary);
+    padding-bottom: 1rem;
+    text-shadow: var(--neon-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.series-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-1);
+}
+
+/* 图片占位框架 */
+.image-placeholder {
+    background: linear-gradient(45deg, 
+        rgba(0, 255, 213, 0.1),
+        rgba(255, 0, 255, 0.1));
+    border: 2px dashed var(--cyber-primary);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cyber-primary);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-placeholder:hover::before {
+    opacity: 0.2;
+}
+
+/* 主打产品样式 */
+.main-product {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.main-product .product-image-frame {
+    height: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 产品网格样式 */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.product-card {
+    background: rgba(9, 4, 25, 0.8);
+    border: 1px solid var(--cyber-primary);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.product-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    font-size: 1.8rem;
+    color: var(--cyber-primary);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px var(--cyber-primary);
+}
+
+.product-subtitle {
+    color: var(--cyber-accent);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.product-details {
+    color: var(--cyber-light);
+}
+
+.ingredients, .effects {
+    margin-bottom: 1rem;
+}
+
+.ingredients h4, .effects h4 {
+    color: var(--cyber-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.ingredients p, .effects p {
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* 悬停效果 */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(15, 240, 252, 0.2);
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 特色展示样式 */
+.product-features {
+    margin-top: 100px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.feature-item {
+    position: relative;
+    padding: 20px;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid var(--cyber-blue);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+}
+
+.feature-item h4 {
+    color: var(--cyber-blue);
+    text-shadow: 0 0 10px var(--cyber-blue);
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-product {
+        grid-template-columns: 1fr;
+    }
+
+    .main-product .product-image-frame {
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .products-grid,
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .products-grid {
+        gap: 2rem;
+    }
+    
+    .product-img {
+        height: 250px;
+    }
+}
+
+/* 按钮样式 */
+.cyber-button {
+    background: transparent;
+    border: 1px solid var(--cyber-primary);
+    color: var(--cyber-primary);
+    padding: 0.8em 2em;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cyber-button:hover {
+    background: var(--cyber-primary);
+    color: var(--cyber-dark);
+    box-shadow: 0 0 20px rgba(15, 240, 252, 0.4);
+}
+
+/* 添加故障艺术效果 */
+.glitch-effect {
+    position: relative;
+}
+
+.glitch-effect::before,
+.glitch-effect::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-effect::before {
+    color: var(--cyber-accent);
+    animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-effect::after {
+    color: var(--cyber-primary);
+    animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-1 {
+    0%, 100% { clip-path: inset(50% 0 50% 0); }
+    20% { clip-path: inset(60% 0 40% 0); }
+    40% { clip-path: inset(40% 0 60% 0); }
+    60% { clip-path: inset(70% 0 30% 0); }
+    80% { clip-path: inset(30% 0 70% 0); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { clip-path: inset(40% 0 60% 0); }
+    20% { clip-path: inset(30% 0 70% 0); }
+    40% { clip-path: inset(70% 0 30% 0); }
+    60% { clip-path: inset(50% 0 50% 0); }
+    80% { clip-path: inset(60% 0 40% 0); }
+}
+
+/* 添加网格背景 */
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--cyber-primary) 1px, transparent 1px),
+        linear-gradient(90deg, var(--cyber-primary) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* 添加动态效果相关的 CSS */
+/* 扫描线效果 */
+.scan-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(15, 240, 252, 0.1) 50%,
+        transparent 100%
+    );
+    animation: scanning 8s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes scanning {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* 霓虹脉冲效果 */
+.neon-pulse {
+    animation: neonPulse 2s infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        text-shadow: 0 0 7px var(--cyber-primary),
+                     0 0 10px var(--cyber-primary),
+                     0 0 21px var(--cyber-primary),
+                     0 0 42px var(--cyber-primary);
+    }
+    50% {
+        text-shadow: 0 0 4px var(--cyber-primary),
+                     0 0 7px var(--cyber-primary),
+                     0 0 13px var(--cyber-primary),
+                     0 0 25px var(--cyber-primary);
+    }
+}
+
+/* 赛博边框效果 */
+.cyber-border {
+    position: relative;
+    border: 1px solid var(--cyber-primary);
+}
+
+.cyber-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--cyber-primary);
+    animation: borderPulse 2s infinite linear;
+}
+
+@keyframes borderPulse {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* 导航链接样式 */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.cyber-link {
+    color: var(--cyber-light);
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cyber-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--cyber-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.cyber-link:hover {
+    color: var(--cyber-primary);
+    text-shadow: 0 0 8px var(--cyber-primary);
+}
+
+.cyber-link:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* 添加悬停时的故障效果 */
+.cyber-link:hover.glitch-text::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    text-shadow: -2px 0 var(--cyber-accent);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 0.3s infinite linear alternate-reverse;
+}
+
+.cyber-link:hover.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: -2px;
+    text-shadow: 2px 0 var(--cyber-primary);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim2 0.3s infinite linear alternate-reverse;
+}
+
+/* 导航栏整体样式优化 */
+.cyber-header {
+    background: rgba(9, 4, 25, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--cyber-primary);
+    box-shadow: 0 0 20px rgba(15, 240, 252, 0.2);
+}
+
+.cyber-nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* 移动端可以添加汉堡菜单 */
+    }
+}
+
+/* 主打产品展示区样式 */
+.main-product-showcase {
+    position: relative;
+    margin: 4rem 0;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.main-product-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.feature-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* 赛博朋克风格框架 */
+.cyber-frame {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--cyber-primary);
+    background: rgba(9, 4, 25, 0.8);
+    box-shadow: 0 0 20px rgba(15, 240, 252, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cyber-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--cyber-primary);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.cyber-frame:hover {
+    box-shadow: 0 0 30px rgba(15, 240, 252, 0.5);
+}
+
+/* 图片悬停效果 */
+.cyber-frame:hover img {
+    transform: scale(1.05);
+}
+
+/* 角落装饰 */
+.corner-decoration {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--cyber-primary);
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/* 产品信息样式 */
+.main-product-info {
+    padding: 2rem;
+    background: rgba(15, 240, 252, 0.05);
+    border-left: 2px solid var(--cyber-primary);
+}
+
+.main-product-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--cyber-primary);
+}
+
+.cyber-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: var(--cyber-light);
+}
+
+/* 特性标签 */
+.product-features {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.feature-tag {
+    padding: 0.5rem 1rem;
+    background: rgba(15, 240, 252, 0.1);
+    border: 1px solid var(--cyber-primary);
+    color: var(--cyber-primary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+    background: var(--cyber-primary);
+    color: var(--cyber-dark);
+    box-shadow: 0 0 15px rgba(15, 240, 252, 0.4);
+}
+
+/* 统一图片样式 */
+.feature-img,
+.product-img,
+.story-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* 图片容器通用样式 */
+.cyber-frame {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--cyber-primary);
+    background: rgba(9, 4, 25, 0.8);
+    box-shadow: 0 0 20px rgba(15, 240, 252, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cyber-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--cyber-primary);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.cyber-frame:hover {
+    box-shadow: 0 0 30px rgba(15, 240, 252, 0.5);
+}
+
+/* 图片悬停效果 */
+.cyber-frame:hover img {
+    transform: scale(1.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .main-product-showcase {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-product-info {
+        border-left: none;
+        border-top: 2px solid var(--cyber-primary);
+    }
+}
+
+/* 联合企业部分样式 */
+.partner-showcase {
+    max-width: 800px;
+    margin: 3rem auto;
+}
+
+.partner-card {
+    background: rgba(9, 4, 25, 0.8);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--cyber-primary);
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.partner-logo {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 2px solid var(--cyber-primary);
+    box-shadow: 0 0 20px rgba(15, 240, 252, 0.2);
+}
+
+.partner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.partner-info {
+    flex: 1;
+}
+
+.partner-info h3 {
+    color: var(--cyber-primary);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--cyber-primary);
+}
+
+.partner-info p {
+    color: var(--cyber-light);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* 悬停效果 */
+.partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(15, 240, 252, 0.2);
+}
+
+.partner-card:hover .partner-img {
+    transform: scale(1.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .partner-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .partner-logo {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* 主标题样式 */
+.main-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--cyber-light);
+    text-shadow: 0 0 20px var(--cyber-primary);
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    color: var(--cyber-primary);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: var(--cyber-light);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* 品牌故事样式 */
+.story-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.story-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+/* 营销活动样式 */
+.event-showcase {
+    max-width: 1000px;
+    margin: 3rem auto;
+}
+
+.event-card {
+    background: rgba(9, 4, 25, 0.8);
+    border: 1px solid var(--cyber-primary);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.event-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.event-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.event-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(9, 4, 25, 0),
+        rgba(9, 4, 25, 0.8)
+    );
+}
+
+.event-info {
+    padding: 2rem;
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.event-header h3 {
+    font-size: 2rem;
+    color: var(--cyber-primary);
+    text-shadow: 0 0 10px var(--cyber-primary);
+}
+
+.event-date {
+    color: var(--cyber-accent);
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--cyber-accent);
+    border-radius: 4px;
+}
+
+.event-details {
+    color: var(--cyber-light);
+}
+
+.event-highlights {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.event-highlights li {
+    margin: 0.8rem 0;
+    position: relative;
+}
+
+.event-highlights li::before {
+    content: '>';
+    color: var(--cyber-primary);
+    position: absolute;
+    left: -1.5rem;
+}
+
+.event-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    color: var(--cyber-light);
+    opacity: 0.8;
+}
+
+/* 悬停效果 */
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(15, 240, 252, 0.2);
+}
+
+.event-card:hover .event-img {
+    transform: scale(1.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .event-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .event-image {
+        height: 200px;
+    }
+} 

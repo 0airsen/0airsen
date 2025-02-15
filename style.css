@@ -1,0 +1,167 @@
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.product-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.product-image-container {
+    flex: 0 0 160px;
+    height: 200px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 主图片样式 */
+.product-img,
+.product-img-hover {
+    max-width: 140px;
+    max-height: 180px;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    object-fit: contain;
+}
+
+/* 悬停效果 */
+.product-img-hover {
+    opacity: 0;
+}
+
+/* 添加光效果 */
+.image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(0, 255, 255, 0.15),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.image-wrapper:hover::after {
+    opacity: 1;
+}
+
+/* 文字内容样式 */
+.product-text {
+    flex: 1;
+    padding: 0.8rem;
+}
+
+.product-text h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+/* 优化配方和功效样式 */
+.ingredients, .effects {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    border-radius: 6px;
+}
+
+.ingredients h4, .effects h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* 赛博朋克边框效果 */
+.cyber-frame::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        45deg,
+        #00ffff 0%,
+        transparent 40%,
+        transparent 60%,
+        #00ffff 100%
+    );
+    z-index: -1;
+    border-radius: 14px;
+    opacity: 0.4;
+}
+
+/* 悬停效果增强 */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.4));
+}
+
+/* 响应式调整 */
+@media (max-width: 1000px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 500px) {
+    .product-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-image-container {
+        width: 140px;
+        height: 180px;
+        margin-bottom: 1rem;
+    }
+
+    .product-text {
+        width: 100%;
+        text-align: center;
+    }
+} 
