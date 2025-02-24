@@ -13,13 +13,48 @@
         <nav class="cyber-nav">
             <div class="logo">
                 <img src="images/logo.png" alt="灵酒源葯Logo" class="logo-img" onerror="this.style.border='2px solid red'">
+                <h1 class="logo-text glitch-text" data-text="灵酒源'葯'">灵酒源"葯"</h1>
             </div>
+            <style>
+                .logo {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                }
+                
+                .logo-img {
+                    height: 50px;
+                    width: auto;
+                }
+                
+                .logo-text {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: #ffffff;
+                    text-shadow: 
+                        0 0 2px #00ffff,
+                        0 0 4px #00ffff,
+                        0 0 6px #00ffff;
+                    letter-spacing: 3px;
+                    margin: 0;
+                    position: relative;
+                    font-family: "Microsoft YaHei", sans-serif;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+                
+                .logo-text::before,
+                .logo-text::after {
+                    display: none;
+                }
+            </style>
             <ul class="nav-links">
                 <li><a href="#products" class="cyber-link glitch-text" data-text="产品系列">产品系列</a></li>
                 <li><a href="#story" class="cyber-link glitch-text" data-text="品牌故事">品牌故事</a></li>
                 <li><a href="#features" class="cyber-link glitch-text" data-text="产品特色">产品特色</a></li>
                 <li><a href="#contact" class="cyber-link glitch-text" data-text="联系我们">联系我们</a></li>
                 <li><a href="survey.html" class="cyber-link glitch-text" data-text="问卷调查">问卷调查</a></li>
+                <li><a href="shopping.html" class="cyber-link glitch-text" data-text="购买专区">购买专区</a></li>
             </ul>
         </nav>
     </header>
@@ -43,11 +78,178 @@
 
         <!-- 主打系列部分 -->
         <section id="main-product" class="content-section">
+            <style>
+                .main-product-showcase {
+                    display: flex;
+                    align-items: center;
+                    gap: 4rem;
+                    padding: 2rem;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+                
+                .main-product-image {
+                    flex: 0 0 50%;
+                    position: relative;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    aspect-ratio: 1/1;
+                    background: rgba(0, 0, 0, 0.2); /* 更淡的背景 */
+                }
+                
+                .feature-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    padding: 20px;
+                    transition: transform 0.5s ease;
+                    filter: none; /* 移除所有滤镜 */
+                    image-rendering: -webkit-optimize-contrast; /* 提高图片清晰度 */
+                    image-rendering: crisp-edges;
+                }
+                
+                .cyber-frame {
+                    position: relative;
+                    padding: 3px;
+                    background: linear-gradient(
+                        45deg,
+                        rgba(0, 255, 255, 0.3),
+                        rgba(0, 255, 255, 0.1)
+                    );
+                    box-shadow: 
+                        0 0 20px rgba(0, 255, 255, 0.2),
+                        inset 0 0 20px rgba(0, 255, 255, 0.1);
+                }
+                
+                .cyber-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border: 2px solid rgba(0, 255, 255, 0.3);
+                    border-radius: 15px;
+                    pointer-events: none;
+                    transition: all 0.3s ease;
+                    backdrop-filter: none; /* 移除模糊效果 */
+                }
+                
+                .corner-decoration {
+                    position: absolute;
+                    width: 30px;
+                    height: 30px;
+                    border: 2px solid rgba(0, 255, 255, 0.5);
+                    z-index: 1;
+                }
+                
+                .top-left {
+                    top: 15px;
+                    left: 15px;
+                    border-right: none;
+                    border-bottom: none;
+                }
+                
+                .top-right {
+                    top: 15px;
+                    right: 15px;
+                    border-left: none;
+                    border-bottom: none;
+                }
+                
+                .bottom-left {
+                    bottom: 15px;
+                    left: 15px;
+                    border-right: none;
+                    border-top: none;
+                }
+                
+                .bottom-right {
+                    bottom: 15px;
+                    right: 15px;
+                    border-left: none;
+                    border-top: none;
+                }
+                
+                .main-product-image:hover .feature-img {
+                    transform: scale(1.02); /* 减小放大效果 */
+                }
+                
+                .main-product-image:hover .cyber-overlay {
+                    border-color: rgba(0, 255, 255, 0.6);
+                    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+                }
+                
+                /* 优化发光效果 */
+                .main-product-image::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: radial-gradient(
+                        circle at center,
+                        rgba(0, 255, 255, 0.05) 0%, /* 减弱发光强度 */
+                        transparent 70%
+                    );
+                    pointer-events: none;
+                    opacity: 0.8;
+                }
+                
+                /* 添加高清图片支持 */
+                @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+                    .feature-img {
+                        image-rendering: auto;
+                    }
+                }
+                
+                .main-product-info {
+                    flex: 0 0 40%;
+                }
+                
+                .main-product-info h3 {
+                    font-size: 2rem;
+                    color: #00ffff;
+                    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+                    margin-bottom: 1.5rem;
+                }
+                
+                .cyber-text {
+                    font-size: 1.2rem;
+                    color: #fff;
+                    opacity: 0.9;
+                    line-height: 1.6;
+                    margin-bottom: 2rem;
+                }
+                
+                .product-features {
+                    display: flex;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+                }
+                
+                .feature-tag {
+                    padding: 0.5rem 1rem;
+                    background: rgba(0, 255, 255, 0.1);
+                    border: 1px solid rgba(0, 255, 255, 0.3);
+                    border-radius: 20px;
+                    color: #fff;
+                    font-size: 0.9rem;
+                    transition: all 0.3s ease;
+                }
+                
+                .feature-tag:hover {
+                    background: rgba(0, 255, 255, 0.2);
+                    border-color: rgba(0, 255, 255, 0.5);
+                    transform: translateY(-2px);
+                }
+            </style>
+            
             <div class="section-container">
                 <h2 class="series-title glitch-text" data-text="主打系列">主打系列</h2>
                 <div class="main-product-showcase">
                     <div class="main-product-image cyber-frame">
-                        <img src="images/main-img.jpg" alt="灵酒源葯主打系列" class="feature-img">
+                        <img src="images/main.jpg" alt="灵酒源葯主打系列" class="feature-img">
                         <div class="cyber-overlay"></div>
                         <div class="corner-decoration top-left"></div>
                         <div class="corner-decoration top-right"></div>
@@ -72,13 +274,137 @@
             <div class="section-container">
                 <h2 class="section-title glitch-text" data-text="产品系列">产品系列</h2>
                 <div class="products-grid">
+                    <style>
+                        .products-grid {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 3rem;
+                            max-width: 1000px;
+                            margin: 0 auto;
+                            padding: 2rem;
+                        }
+                        
+                        .product-card {
+                            width: 100%;
+                            background: rgba(0, 0, 0, 0.7);
+                            border: 1px solid rgba(0, 255, 255, 0.3);
+                            border-radius: 15px;
+                            overflow: hidden;
+                            transition: all 0.3s ease;
+                            box-shadow: 
+                                0 0 15px rgba(0, 255, 255, 0.2),
+                                inset 0 0 20px rgba(0, 255, 255, 0.1);
+                        }
+                        
+                        .product-card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 
+                                0 0 25px rgba(0, 255, 255, 0.3),
+                                inset 0 0 30px rgba(0, 255, 255, 0.2);
+                            border-color: rgba(0, 255, 255, 0.5);
+                        }
+                        
+                        .product-content {
+                            display: flex;
+                            align-items: center;
+                            gap: 3rem;
+                            padding: 2.5rem;
+                            position: relative;
+                        }
+                        
+                        .product-image-container {
+                            flex: 0 0 35%;
+                            position: relative;
+                        }
+                        
+                        .image-wrapper {
+                            position: relative;
+                            overflow: hidden;
+                            border-radius: 10px;
+                        }
+                        
+                        .image-wrapper::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            border: 2px solid rgba(0, 255, 255, 0.3);
+                            border-radius: 10px;
+                            pointer-events: none;
+                        }
+                        
+                        .image-wrapper img {
+                            width: 100%;
+                            height: auto;
+                            object-fit: cover;
+                            border-radius: 10px;
+                            transition: transform 0.3s ease;
+                            filter: brightness(1.1) contrast(1.1);
+                        }
+                        
+                        .product-card:hover .image-wrapper img {
+                            transform: scale(1.05);
+                        }
+                        
+                        .product-text {
+                            flex: 0 0 55%;
+                            padding-right: 10%;
+                        }
+                        
+                        .product-text h3 {
+                            font-size: 1.8rem;
+                            margin-bottom: 1rem;
+                            color: #00ffff;
+                            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+                        }
+                        
+                        .product-subtitle {
+                            font-size: 1.2rem;
+                            color: #fff;
+                            margin-bottom: 1.5rem;
+                            opacity: 0.8;
+                        }
+                        
+                        .product-details {
+                            background: rgba(0, 0, 0, 0.3);
+                            padding: 1.5rem;
+                            border-radius: 8px;
+                            border: 1px solid rgba(0, 255, 255, 0.2);
+                        }
+                        
+                        .product-details h4 {
+                            color: #00ffff;
+                            margin-bottom: 0.5rem;
+                        }
+                        
+                        .product-details p {
+                            color: #fff;
+                            opacity: 0.8;
+                            line-height: 1.6;
+                        }
+                        
+                        .character-image {
+                            position: absolute;
+                            right: -80px;
+                            height: 220px;
+                            width: auto;
+                            transition: transform 0.4s ease;
+                            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.3));
+                        }
+                        
+                        .product-card:hover .character-image {
+                            transform: translateX(-30px) scale(1.05);
+                        }
+                    </style>
+                    
                     <!-- 四君子酒 -->
                     <div class="product-card cyber-frame">
                         <div class="product-content">
                             <div class="product-image-container">
                                 <div class="image-wrapper">
-                                    <img src="images/p1.jpg" alt="四君子酒罐装" class="product-img">
-                                    <img src="images/p1-hover.jpg" alt="四君子酒瓶装" class="product-img-hover">
+                                    <img src="images/p1.jpg" alt="四君子酒" class="product-img">
                                 </div>
                             </div>
                             <div class="product-text">
@@ -95,6 +421,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <img src="images/c1.jpg" alt="四君子酒角色" class="character-image">
                         </div>
                     </div>
 
@@ -103,8 +430,7 @@
                         <div class="product-content">
                             <div class="product-image-container">
                                 <div class="image-wrapper">
-                                    <img src="images/p2.jpg" alt="当归红枣酒" class="product-img main-img">
-                                    <img src="images/p2-hover.png" alt="当归红枣酒细节" class="product-img hover-img">
+                                    <img src="images/p2.jpg" alt="当归红枣酒" class="product-img">
                                 </div>
                             </div>
                             <div class="product-text">
@@ -121,6 +447,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <img src="images/c2.jpg" alt="当归红枣酒角色" class="character-image">
                         </div>
                     </div>
 
@@ -129,8 +456,7 @@
                         <div class="product-content">
                             <div class="product-image-container">
                                 <div class="image-wrapper">
-                                    <img src="images/p3.jpg" alt="菊花决明子酒" class="product-img main-img">
-                                    <img src="images/p3-hover.png" alt="菊花决明子酒细节" class="product-img hover-img">
+                                    <img src="images/p3.jpg" alt="菊花决明子酒" class="product-img">
                                 </div>
                             </div>
                             <div class="product-text">
@@ -147,6 +473,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <img src="images/c3.jpg" alt="菊花决明子酒角色" class="character-image">
                         </div>
                     </div>
 
@@ -155,8 +482,7 @@
                         <div class="product-content">
                             <div class="product-image-container">
                                 <div class="image-wrapper">
-                                    <img src="images/p4.jpg" alt="人参养生酒" class="product-img main-img">
-                                    <img src="images/p4-hover.png" alt="人参养生酒细节" class="product-img hover-img">
+                                    <img src="images/p4.jpg" alt="人参养生酒" class="product-img">
                                 </div>
                             </div>
                             <div class="product-text">
@@ -173,6 +499,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <img src="images/c4.jpg" alt="人参养生酒角色" class="character-image">
                         </div>
                     </div>
                 </div>
@@ -195,27 +522,129 @@
             <div class="section-container">
                 <h2 class="section-title glitch-text" data-text="药酒文化节">药酒文化节</h2>
                 <div class="event-showcase">
+                    <style>
+                        .event-showcase {
+                            max-width: 1200px;
+                            margin: 0 auto;
+                            padding: 2rem;
+                        }
+                        
+                        .event-card {
+                            background: rgba(0, 0, 0, 0.7);
+                            border: 1px solid rgba(0, 255, 255, 0.3);
+                            border-radius: 15px;
+                            overflow: hidden;
+                            position: relative;
+                        }
+                        
+                        .event-image {
+                            position: relative;
+                            width: 100%;
+                            height: 400px;
+                            overflow: hidden;
+                        }
+                        
+                        .event-image img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: transform 0.5s ease;
+                            filter: brightness(1.1) contrast(1.1);
+                        }
+                        
+                        .event-card:hover .event-image img {
+                            transform: scale(1.05);
+                        }
+                        
+                        .event-info {
+                            padding: 2.5rem;
+                            background: linear-gradient(
+                                to bottom,
+                                rgba(0, 0, 0, 0.7),
+                                rgba(0, 0, 0, 0.9)
+                            );
+                        }
+                        
+                        .event-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 1.5rem;
+                        }
+                        
+                        .event-header h3 {
+                            font-size: 2rem;
+                            color: #00ffff;
+                            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+                        }
+                        
+                        .event-date {
+                            color: #fff;
+                            font-size: 1.1rem;
+                            padding: 0.5rem 1rem;
+                            background: rgba(0, 255, 255, 0.1);
+                            border: 1px solid rgba(0, 255, 255, 0.3);
+                            border-radius: 20px;
+                        }
+                        
+                        .event-details {
+                            color: #fff;
+                            opacity: 0.9;
+                        }
+                        
+                        .event-highlights {
+                            display: grid;
+                            grid-template-columns: repeat(2, 1fr);
+                            gap: 1rem;
+                            margin: 1.5rem 0;
+                            list-style: none;
+                        }
+                        
+                        .event-highlights li {
+                            position: relative;
+                            padding-left: 1.5rem;
+                            color: #fff;
+                            opacity: 0.8;
+                        }
+                        
+                        .event-highlights li::before {
+                            content: '•';
+                            position: absolute;
+                            left: 0;
+                            color: #00ffff;
+                        }
+                        
+                        .event-location {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                            margin-top: 1.5rem;
+                            color: #00ffff;
+                        }
+                    </style>
+                    
                     <div class="event-card cyber-frame">
                         <div class="event-image">
-                            <img src="main-img.jpg" alt="药酒文化节" class="event-img">
-                            <div class="event-overlay"></div>
+                            <img src="images/bc1.jpg" alt="传统药酒品鉴" class="event-img">
                         </div>
                         <div class="event-info">
                             <div class="event-header">
                                 <h3 class="neon-text">2025药酒文化节</h3>
-                                <span class="event-date">2025.06.01 - 202506.07</span>
+                                <span class="event-date">2025.06.01 - 2025.06.07</span>
                             </div>
                             <div class="event-details">
-                                <p class="cyber-text">传统与现代的完美融合，一场视觉与味觉的盛宴</p>
+                                <p class="cyber-text">传统与现代的完美融合，一场视觉与味觉的盛宴。在这里，您可以体验到传统药酒的精髓，感受现代工艺带来的创新。</p>
                                 <ul class="event-highlights">
                                     <li>古法酿造工艺展示</li>
                                     <li>药酒品鉴体验</li>
                                     <li>中医养生讲座</li>
                                     <li>互动调酒体验</li>
+                                    <li>传统文化展演</li>
+                                    <li>创新配方品鉴</li>
                                 </ul>
                                 <div class="event-location">
                                     <span class="location-icon">📍</span>
-                                    <span>中心展览馆</span>
+                                    <span>中心展览馆 - 传统文化体验区</span>
                                 </div>
                             </div>
                         </div>

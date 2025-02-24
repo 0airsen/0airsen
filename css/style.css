@@ -1353,4 +1353,81 @@ body {
     .event-image {
         height: 200px;
     }
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 1024px) {
+    .section-container {
+        padding: 0 20px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* 导航栏适配 */
+    .cyber-nav {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links li {
+        margin: 10px 0;
+    }
+    
+    /* 主视觉区域适配 */
+    .hero-content {
+        padding: 20px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    /* 产品展示适配 */
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 页脚适配 */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-logo, .footer-info, .footer-social {
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-product-showcase {
+        flex-direction: column;
+    }
+    
+    .product-features {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .feature-tag {
+        margin: 5px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
 } 
